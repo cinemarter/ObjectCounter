@@ -1,11 +1,11 @@
 #include "shape.h"
 
-void Circle::accept(Visitor* V, int& count)
+void Circle::accept(Visitor* pV)
 {
-	V->visit(this, count);
+	pV->visit(this);
 }
 
-void Rectangle::accept(Visitor* V, int& count)
+void Rectangle::accept(Visitor* pV)
 {
-	V->visit(this, count);
+	pV->visit(this);
 }

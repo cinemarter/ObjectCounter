@@ -1,13 +1,17 @@
 #include "visitor.h"
 
-void VisitorCircle::visit(Shape* pB, int& count)
+void VisitorCounter::visit(Circle* pObj)
 {
-	if (dynamic_cast<Circle*>(pB))
-		++count;
+	if (_type == EObjectType::Circle)
+	{
+		++_objectCount;
+	}	
 }
 
-void VisitorRectangle::visit(Shape* pB, int& count)
+void VisitorCounter::visit(Rectangle* pObj)
 {
-	if (dynamic_cast<Rectangle*>(pB))
-		++count;
+	if (_type == EObjectType::Rectangle)
+	{
+		++_objectCount;
+	}
 }

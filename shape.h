@@ -2,25 +2,23 @@
 #include "visitor.h"
 
 class Visitor;
-class VisitorCircle;
-class VisitorRectangle;
 
 class Shape
 {
 public:
 	virtual ~Shape() = default;
 
-	virtual void accept(Visitor* V, int& count) = 0;
+	virtual void accept(Visitor* pV) = 0;
 };
 
 class Circle : public Shape
 {
 public:
-	void accept(Visitor* V, int& count);
+	void accept(Visitor* pV);
 };
 
 class Rectangle : public Shape
 {
 public:
-	void accept(Visitor* V, int& count);
+	void accept(Visitor* pV);
 };

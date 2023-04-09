@@ -1,24 +1,27 @@
 #pragma once
 #include "shape.h"
+#include "enum.h"
 
-class Shape;
 class Circle;
-class Circle;
+class Rectangle;
 
 class Visitor
 {
 public:
-	virtual void visit(Shape*, int& count) = 0;
+	virtual void visit(Circle* pObj) = 0;
+	virtual void visit(Rectangle* pObj) = 0;
 };
 
-class VisitorCircle : public Visitor
+class VisitorCounter : public Visitor
 {
 public:
-	void visit(Shape* pB, int& count);
-};
+	VisitorCounter(EObjectType type) : _type(type) {}
+	void visit(Circle*) override;
+	void visit(Rectangle*) override;
 
-class VisitorRectangle : public Visitor
-{
-public:
-	void visit(Shape* pB, int& count);
+	int GetCount() const { return _objectCount; }
+
+private:
+	int _objectCount = 0;
+	EObjectType _type;
 };
