@@ -13,10 +13,13 @@ Using Visitor design pattern to count the number of objects of a specific type.
 
 int main()
 {
-	Circle c1, c2;
-	Rectangle r3, r4, r5;
-	std::vector<Shape*> col{&c1,&c2,&r3,&r4,&r5};
-	VisitorCounter v(EObjectType::Rectangle);
+	std::vector<std::unique_ptr<Shape>> col;
+	col.emplace_back(std::make_unique<Circle>());
+	col.emplace_back(std::make_unique<Rectangle>());
+	col.emplace_back(std::make_unique<Circle>());
+	col.emplace_back(std::make_unique<Rectangle>());
+	col.emplace_back(std::make_unique<Rectangle>());
+	VisitorCounter v(EObjectType::Circle);
 	for (auto& el : col)
 	{
 		el->accept(&v);
